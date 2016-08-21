@@ -1,0 +1,22 @@
+#!/bin/bash 
+
+#Notes script
+#author:meryborn
+
+#Date var
+date=$(date)
+
+#topic
+topic=$*
+
+#filename
+filename="${HOME}/Documents/${topic}notes.txt"
+
+read -p "Your note: " note
+
+if [[ $note ]]; then
+	echo "$date: $note" >> "$filename"
+	echo "Your note: '$note' saved to $filename"
+else
+	echo "Nothing saved"
+fi

@@ -1,0 +1,20 @@
+#!/bin/bash
+
+[[ ! $1 ]] && echo "Need exactly one argument" && exit 0
+[[ ! -d $1 ]] && echo "Must be dir" && exit 0
+
+declare -i i=0
+
+declare dir=$1
+ls "$dir" > "${dir}name.txt"
+
+
+#read -rp "Enter pattern: " pattern
+
+while read -r line; do 
+	 mv "${dir}${line}" "${dir}${line%-*.mp3}.mp3"
+done < ${dir}name.txt
+
+rm "${dir}name.txt.mp3"
+
+exit 0

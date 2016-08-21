@@ -1,0 +1,18 @@
+#!/bin/bash
+
+rand_num=$(($RANDOM % 100))
+
+my_num=
+
+while [[ $rand_num -ne my_num ]]; do
+	read -p "Take a guess: " my_num
+	if [[ $rand_num -gt $my_num ]]; then
+		echo "Random number is greater then guess"
+	elif [[ $rand_num -lt $my_num ]]; then
+		echo "Random number is less then guess"
+	else 
+		echo "You got damn right"
+	fi
+done
+
+exit 0

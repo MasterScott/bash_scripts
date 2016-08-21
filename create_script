@@ -1,0 +1,37 @@
+#!/bin/bash
+
+if [[ ! $1 ]]; then
+	echo "Missing argument"
+	exit 1
+fi
+
+scriptname="$1"
+bindir="${HOME}/bin"
+filename="${bindir}/${scriptname}"
+
+if [[ -e $filename ]]; then
+	echo "File $filename exists"
+	exit 1
+fi
+
+if type "$scriptname" 2> /dev/null ; then
+	echo "There is already command with the name $scriptname"
+fi
+
+if [[ ! -d $bindir ]]; then
+	if mkdir "$bindir"; then
+		echo "Create $bindir"
+	else
+		echo "Could not create $bindir"
+		exit 1
+	fi
+fi
+
+echo "#!/bin/bash" > "$filename"
+chmod u+x "$filename"
+if [[ $EDITOR ]]; then
+	$EDITOR "$filename"
+	echo "Open file"
+else
+	echo "Can't open file. \$EDITOR not set"
+fi

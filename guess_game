@@ -1,0 +1,17 @@
+#!/bin/bash
+
+declare -ir target=$(( ($RANDOM % 100) + 1 ))
+declare -i guess=0
+
+until (( target == guess )); do
+	read -p "Your guess: " guess
+	(( guess )) || continue
+	
+	if (( $target > $guess )); then
+		echo "The number is grater than guess"
+	elif (( $target < $guess )); then
+		echo "The number is lower than guess"
+	else
+		echo "You got damn right"
+	fi
+done

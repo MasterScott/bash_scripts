@@ -1,0 +1,12 @@
+#!/bin/bash
+
+[[ ! $1 ]] && { echo "Need exactly one argument" >&2; exit 1; }
+
+case $1 in
+	"dog")
+	echo "WOOF!" ;;
+	"cat") 
+	echo "Nya!" ;;
+	*)
+	echo "WTF is this???" ;;
+esac

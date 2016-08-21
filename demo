@@ -1,0 +1,17 @@
+#!/bin/bash
+
+function sum (){
+	echo	$(( $1 + $2 ))
+}
+
+starts_with_a () {
+	[[ $1 == [aA]* ]];
+	return $?
+}
+
+if starts_with_a eax; then
+	echo "yup"
+else
+	echo "no"
+fi
+
